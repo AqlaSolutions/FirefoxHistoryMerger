@@ -89,28 +89,6 @@ namespace FirefoxHistoryMerger
                                 // если нет похожих, то только тогда оставляем
                                 if (visits.Values.All(v => !v["visit_date"].Equals(visit["visit_date"]) || !v["visit_type"].Equals(visit["visit_type"]))) continue;
 
-                                //Entity visitOld;
-                                //// оставляем если такого visit под этим id нет
-                                //// да, при добавлении будут создаваться новые id
-                                //// т.е. но мы хотя бы избегаем копирования записей из "историч. исходников"
-                                //if (!finalVisits.TryGetValue(Convert.ToInt32(visit["id"]), out visitOld)) continue;
-                                //if (!AreEntitiesEqual(visit, visitOld)) continue;
-
-                                //// visit равны, но может быть не равны places?
-                                //var placeId = Convert.ToInt32(visit["place_id"]);
-                                //int newPlaceId;
-
-                                //// если место есть под другим id, то оставляем визит, т.е. места-то не совпадают под старым id
-                                //if (placeRedirects.TryGetValue(placeId, out newPlaceId)) continue;
-
-                                //// оставляем если это новое место
-                                //Entity placeOld;
-                                //if (!finalPlaces.TryGetValue(placeId, out placeOld)) continue;
-
-                                //Entity place;
-                                //// оставляем если в final нет такого же place под тем же id (т.е. он остался в списке insert)
-                                //if (insertPlaces.TryGetValue(placeId, out place)) continue;
-
                                 insertVisits.Remove(visitKV.Key);
                             }
                             Console.WriteLine("Writing " + insertPlaces.Count + " places and " + insertVisits.Count + " visits from " + placesFile);
